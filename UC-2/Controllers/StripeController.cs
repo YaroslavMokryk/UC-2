@@ -21,5 +21,13 @@ namespace UC_2.Controllers
 
             return result;
         }
+
+        [HttpGet("balanceTransactions")]
+        public async Task<ActionResult<StripeList<BalanceTransaction>>> GetStripeBalanceTransactions(long? limit, string offset, CancellationToken ct)
+        {
+            StripeList<BalanceTransaction> result = await _stripeService.GetStripeBalanceTransactions(limit, offset, ct);
+
+            return result;
+        }
     }
 }
